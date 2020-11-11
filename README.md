@@ -25,11 +25,11 @@ has_many :records
 | ---------    | ------          | -----------      |
 | name         | string          | null: false      |
 | description  | text            | null: false      |
-| category     | integer         | null: false      |
-| condition    | integer         | null: false      |
-| shipping     | integer         | null: false      |
-| region       | integer         | null: false      |
-| days         | integer         | null: false      |
+| category_id  | integer         | null: false      |
+| condition_id | integer         | null: false      |
+| shipping_id  | integer         | null: false      |
+| region_id    | integer         | null: false      |
+| days_id      | integer         | null: false      |
 | price        | integer         | null: false      |
 | user         | references      | foreign_key: true |
 
@@ -57,14 +57,14 @@ has_many :records
 
   ## addresses テーブル
 
-| Column     | Type      | Options           |
-| ---------  | ------    | -----------       |
-| zipcode    | integer   | null: false       |
-| prefecture | integer   | null: false       |
-| city       | string    | null: false       |
-| house      | string    | null: false       |
-| telephone  | integer   | null: false       |
-| record     | references| foreign_key: true |
+| Column        | Type      | Options           |
+| ---------     | ------    | -----------       |
+| zipcode       | integer   | null: false       |
+| prefecture_id | integer   | null: false       |
+| city          | string    | null: false       |
+| house         | string    | null: false       |
+| telephone     | integer   | null: false       |
+| record        | references| foreign_key: true |
 
 ## association
   belongs_to :record
