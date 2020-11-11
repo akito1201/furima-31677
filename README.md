@@ -51,7 +51,7 @@ has_many :records
 
 ## association
   belongs_to :user
-  belongs_to :address
+  belongs_to :item
 
 
 
