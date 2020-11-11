@@ -72,24 +72,30 @@ RSpec.describe User, type: :model do
 
 
     describe "本人情報確認" do
-     it "ユーザー本名は名字と名前がないと登録できない" do
+     it "ユーザー本名は名字がないと登録できない" do
       @user.last_name = nil
       @user.valid?
       expect(@user.errors.full_messages).to include("Last name can't be blank")
+     end
+
+     it "ユーザー本名は名前がないと登録できない" do
+      @user.first_name = nil
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name can't be blank")
      end
 
      it "ユーザー本名は半角だと登録できない" do
       @user.last_name = "ﾃｽﾄ"
       @user.first_name = "ﾀﾛｳ"
       @user.valid?
-      expect(@user.errors.full_messages).to include("Last name is invalid")
+      expect(@user.errors.full_messages).to include("Last name is invalid", "First name is invalid")
      end
 
      it "ユーザー本名のフリガナは半角だと登録できない" do
       @user.kana_last_name = "ﾃｽﾄ"
       @user.kana_first_name = "ﾀﾛｳ"
       @user.valid?
-      expect(@user.errors.full_messages).to include("Kana last name is invalid")
+      expect(@user.errors.full_messages).to include("Kana last name is invalid", "Kana first name is invalid")
      end
 
      it "誕生日が空だと登録できない" do
