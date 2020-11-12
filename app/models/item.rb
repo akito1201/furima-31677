@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  extended ActiveHash::Associations::ActiveRecordExtensions
+  extend ActiveHash::Associations::ActiveRecordExtensions
 
    #アソシエーション
     belongs_to :category
@@ -10,8 +10,6 @@ class Item < ApplicationRecord
     belongs_to :user
 
    #バリデーション
-    validates :user, foreign_key: true
-  
     with_options presence: true do
       validates :name
       validates :description

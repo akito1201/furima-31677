@@ -1,19 +1,12 @@
 class Day < ActiveHash::Base
-  self.data [
-    {id: 1, name: "A"}
-    {id: 2, name: "A"}
-    {id: 3, name: "A"}
-    {id: 4, name: "A"}
-    {id: 5, name: "A"}
-    {id: 6, name: "A"}
-    {id: 7, name: "A"}
-    {id: 8, name: "A"}
-    {id: 9, name: "A"}
-    {id: 10, name: "A"}
-    {id: 11, name: "A"}
-    {id: 12, name: "A"}
+  self.data = [
+    {id: 1, name: "---"},
+    {id: 2, name: "1~2日で発送"},
+    {id: 3, name: "2~3日で発送"},
+    {id: 4, name: "4~7日で発送"}
   ]
-end
 
 include ActiveHash::Associations
 has_many :items
+
+end
