@@ -93,13 +93,11 @@ RSpec.describe User, type: :model do
 
      it "ユーザー本名のフリガナ（名字）は空だと登録できない" do
       @user.kana_last_name = nil
-      @user.kana_first_name = nil
       @user.valid?
       expect(@user.errors.full_messages).to include("Kana last name can't be blank")
      end
 
      it "ユーザー本名のフリガナ（名前）は空だと登録できない" do
-      @user.kana_last_name = nil
       @user.kana_first_name = nil
       @user.valid?
       expect(@user.errors.full_messages).to include("Kana first name can't be blank")
