@@ -1,6 +1,5 @@
 window.addEventListener('load', () => {
-  console.log("OK")
-
+  
 //価格入力欄の情報を取得//
   const priceInput = document.getElementById("item-price");
   priceInput.addEventListener("input", () => {
