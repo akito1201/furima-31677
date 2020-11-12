@@ -91,11 +91,18 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("First name can't be blank")
      end
 
-     it "ユーザー本名のフリガナは空だと登録できない" do
+     it "ユーザー本名のフリガナ（名字）は空だと登録できない" do
       @user.kana_last_name = nil
       @user.kana_first_name = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("Kana last name can't be blank", "Kana first name can't be blank")
+      expect(@user.errors.full_messages).to include("Kana last name can't be blank")
+     end
+
+     it "ユーザー本名のフリガナ（名前）は空だと登録できない" do
+      @user.kana_last_name = nil
+      @user.kana_first_name = nil
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Kana first name can't be blank")
      end
 
 
