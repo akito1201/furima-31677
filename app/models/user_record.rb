@@ -4,10 +4,10 @@ class UserRecord
 
   with_options presence: true do
     validates :token
-    validates :zipcode
+    validates :zipcode, format: { with: /\A\d{3}[-]\d{4}\z/ }
     validates :city
     validates :house
-    validates :telephone
+    validates :telephone, format: {with: /\A\d{10,11}\z/ }
   end
 
   validates :region_id, numericality: { other_than: 1, message: 'Select' }
