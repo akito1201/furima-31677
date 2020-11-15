@@ -10,11 +10,11 @@ class RecordsController < ApplicationController
   def create
     @item = Item.find(params[:item_id])
     @user_record = UserRecord.new(user_record_params)
-
+    binding.pry
     if @user_record.valid?
       pay_item
       @user_record.save
-      return redirect_to root_path
+      redirect_to root_path
     else
       render 'index'
     end
