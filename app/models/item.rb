@@ -10,6 +10,7 @@ class Item < ApplicationRecord
   belongs_to :region
   belongs_to :delivery
   belongs_to :user
+  has_one :record
 
   # バリデーション
   with_options presence: true do
