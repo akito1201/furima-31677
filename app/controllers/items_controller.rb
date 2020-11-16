@@ -52,5 +52,4 @@ class ItemsController < ApplicationController
   def seller_check
     redirect_to root_path unless current_user.id == @item.user.id
   end
-
 end
