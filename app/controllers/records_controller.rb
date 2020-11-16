@@ -1,15 +1,14 @@
 class RecordsController < ApplicationController
   before_action :authenticate_user!
   before_action :sold_out, only: :index
+  before_action :set_item, only: [:index, :create]
 
   def index
-    set_item
     @user_record = UserRecord.new
     redirect_to root_path if current_user.id == @item.user.id
   end
 
   def create
-    set_item
     @user_record = UserRecord.new(user_record_params)
     if @user_record.valid?
       pay_item
