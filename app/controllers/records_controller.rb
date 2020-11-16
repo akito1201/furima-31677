@@ -11,13 +11,13 @@ class RecordsController < ApplicationController
   def create
     set_item
     @user_record = UserRecord.new(user_record_params)
-      if @user_record.valid?
-        pay_item
-        @user_record.save
-        redirect_to root_path
-      else
-        render 'index'
-      end
+    if @user_record.valid?
+      pay_item
+      @user_record.save
+      redirect_to root_path
+    else
+      render 'index'
+    end
   end
 
   private
@@ -31,7 +31,7 @@ class RecordsController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: user_record_params[:token],
@@ -43,5 +43,4 @@ class RecordsController < ApplicationController
     @item = Item.find(params[:item_id])
     redirect_to root_path unless @item.record.nil?
   end
-
 end
