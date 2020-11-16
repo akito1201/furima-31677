@@ -1,7 +1,7 @@
 class RecordsController < ApplicationController
   before_action :authenticate_user!
-  before_action :sold_out, only: :index
   before_action :set_item, only: [:index, :create]
+  before_action :sold_out, only: :index
 
   def index
     @user_record = UserRecord.new
@@ -39,7 +39,6 @@ class RecordsController < ApplicationController
   end
 
   def sold_out
-    @item = Item.find(params[:item_id])
     redirect_to root_path unless @item.record.nil?
   end
 end

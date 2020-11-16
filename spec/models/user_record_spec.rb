@@ -32,7 +32,7 @@ RSpec.describe UserRecord, type: :model do
     it 'region_idが空だと保存できないこと' do
       @user_record.region_id = nil
       @user_record.valid?
-      expect(@user_record.errors.full_messages).to include('Region Select')
+      expect(@user_record.errors.full_messages).to include("Region can't be blank")
     end
     it 'region_idが「1」だと保存できないこと' do
       @user_record.region_id = '1'
@@ -48,6 +48,10 @@ RSpec.describe UserRecord, type: :model do
       @user_record.house = nil
       @user_record.valid?
       expect(@user_record.errors.full_messages).to include("House can't be blank")
+    end
+    it '建物名は空でも保存できること' do
+      @user_record.building = nil
+      expect(@user_record).to be_valid
     end
     it 'telephoneが空だと保存できないこと' do
       @user_record.telephone = nil

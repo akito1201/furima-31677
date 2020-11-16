@@ -1,5 +1,7 @@
 FactoryBot.define do
   factory :user_record do
+    user_id { 1 }
+    item_id { 1 }
     token { 'tok_abcdefghijk00000000000000000' }
     zipcode { '111-2222' }
     region_id { 2 }

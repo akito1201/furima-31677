@@ -5,14 +5,13 @@ class UserRecord
   with_options presence: true do
     validates :token
     validates :zipcode, format: { with: /\A\d{3}-\d{4}\z/ }
+    validates :region_id, numericality: { other_than: 1, message: 'Select' }
     validates :city
     validates :house
     validates :telephone, format: { with: /\A\d{10}$|^\d{11}\z/ }
     validates :item_id
     validates :user_id
   end
-
-  validates :region_id, numericality: { other_than: 1, message: 'Select' }
 
   def save
     record = Record.create(item_id: item_id, user_id: user_id)
