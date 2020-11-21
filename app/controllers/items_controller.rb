@@ -1,10 +1,15 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :seller_check, only: [:edit, :destroy]
 
   def index
     @items = Item.order('created_at DESC')
+    @favorites = Favorite.find_by(user_id: current_user.id)
+  end
+
+  def owner
+    @items = Item.where(user_id: current_user.id)
   end
 
   def new
@@ -21,6 +26,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @favorite = Favorite.find_by(item_id: @item.id, user_id: current_user.id)
   end
 
   def edit
@@ -39,6 +45,15 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
+  def search
+    keyword = params[:keyword]
+    if keyword.present?
+    @items = Item.search(params[:keyword])
+    else
+      redirect_to root_path
+    end
+  end
+
   private
 
   def item_params
@@ -52,4 +67,6 @@ class ItemsController < ApplicationController
   def seller_check
     redirect_to root_path unless current_user.id == @item.user.id
   end
+
+
 end

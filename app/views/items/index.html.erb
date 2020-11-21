@@ -125,10 +125,31 @@
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
-       <%= render partial: "item", collection: @items %>
+      <% @items.each do |item| %>
+        <li class='list'>
+          <%= link_to item_path(item) do %>
+          <div class='item-img-content'>
+            <%= image_tag item.image, class: "item-img" %>
+            <% if item.record.present? %>
+              <div class='sold-out'>
+                <span>Sold Out!!</span>
+              </div>
+            <% end %>
+          </div>
+          <div class='item-info'>
+            <h3 class='item-name'><%= item.name %></h3>
+              <div class='item-price'>
+              <span><%= item.price %>円<br><%= item.shipping.name %></span>
+              </div>
+          </div>
+            <% end %>
+        </li> 
+      <% end %>
+
+
   <%# /商品一覧 %>
 
-   <%# 商品がない場合のダミー %>
+  <%# 商品がない場合のダミー %>
       <% unless @items.present? %>
       <li class='list'>
         <%= link_to '#' do %>

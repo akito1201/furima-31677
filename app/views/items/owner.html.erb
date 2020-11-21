@@ -1,0 +1,37 @@
+<%= render "shared/header" %>
+
+<% if @items.present? %>
+<div class='item-contents'>
+<ul class='item-lists'>
+<% @items.each do |item| %>
+<li class='list'>
+  <%= link_to item_path(item.id) do %>
+    <div class='item-img-content'>
+      <%= image_tag item.image, class: "item-img" %>
+      <% if item.record.present? %>
+        <div class='sold-out'>
+          <span>Sold Out!!</span>
+        </div>
+      <% end %>
+      </div>
+    <div class='item-info'>
+      <h3 class='item-name'>
+        <%= item.name %>
+      </h3>
+    <% end %>
+      <div class='item-price'>
+        <span><%= item.price %>円<br><%= item.shipping.name %></span>
+      </div>
+    </div>
+</li> 
+<% end %>
+</ul>
+</div>
+<% else %>
+    <div class="search-result">
+      <p class="search-message">出品された商品はありません</p>
+      <div>
+        <%= link_to "もどる", root_path, class:"return-btn" %>
+      </div>
+    </div>
+<% end %>

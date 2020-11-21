@@ -247,7 +247,9 @@ a {
 .item-lists>.list {
   width: 37vh;
   padding: 1vw;
-  background-color: #FFF;
+  background-color:  lightcyan;
+  border: 1px solid lightblue;
+  margin: 2px;
 }
 
 
@@ -284,6 +286,7 @@ a {
 
 .item-name {
   font-size: 2.5vh;
+  color: black;
 }
 
 .item-price {
@@ -306,6 +309,16 @@ a {
 
 .star-count {
   font-size: 2vh;
+}
+
+.favorite-button {
+  position: relative;
+}
+
+.favorite-star {
+  position: absolute;
+  top: -2.2px;
+  right: 0.5px;
 }
 
 /* //商品一覧 */
