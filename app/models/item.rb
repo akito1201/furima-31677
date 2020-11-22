@@ -1,4 +1,5 @@
 class Item < ApplicationRecord
+  attr_accessor :checked
   extend ActiveHash::Associations::ActiveRecordExtensions
 
   # アソシエーション
