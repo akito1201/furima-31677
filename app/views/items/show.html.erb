@@ -29,12 +29,12 @@
       <%= link_to '削除', item_path(@item), method: :delete, class:'item-destroy' %>
     <% elsif user_signed_in? && current_user != @item.user && @item.record.nil? %>
       <%= link_to '購入画面に進む', item_records_path(@item) ,class:"item-red-btn"%>
-        <% if @favorite.checked == false %>
+        <% if @favorite == false %>
           <div class= "favorite-btn" id= "favorite-btn" data_id=<%= @item.id %>>
             <%= image_tag "favorite-star.png" ,id:"favorite-star-icon" ,width:"20",height:"20" %>
             <span id="favorite">お気に入りに登録する</span>
           </div>
-        <% elsif @favorite.checked == true %>
+        <% elsif @favorite == true %>
           <div class= "favorite-btn" style="background-color: #FF6600; color: white;" id= "favorite-btn" data_id=<%= @item.id %>>
             <%= image_tag "favorite-star.png" ,id:"favorite-star-icon" ,width:"20",height:"20" %>
             <span id="favorite">お気に入り登録済み</span>
