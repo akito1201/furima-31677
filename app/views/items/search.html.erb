@@ -1,0 +1,13 @@
+<%= render "shared/header" %>
+<ul class='item-lists'>
+<% if @items.present? %>
+    <%= render partial: "item", collection: @items %>
+<% else %>
+    <div class="search-result">
+      <p class="search-message">該当する商品はありません</p>
+      <div>
+        <%= link_to "もどる", root_path, class:"return-btn" %>
+      </div>
+    </div>
+<% end %>
+</ul>

@@ -3,6 +3,7 @@ class Item < ApplicationRecord
 
   # アソシエーション
   has_one_attached :image
+  has_many :favorite
 
   belongs_to :category
   belongs_to :condition
@@ -34,5 +35,13 @@ class Item < ApplicationRecord
     validates :shipping_id
     validates :region_id
     validates :delivery_id
+  end
+
+  def self.search(search)
+    if search != ""
+      Item.where('name LIKE(?)', "%#{search}%")
+    else
+      Item.all
+    end
   end
 end

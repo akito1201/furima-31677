@@ -1,0 +1,39 @@
+<%= render "shared/header" %>
+
+<% if @favorites.present? %>
+<div class='item-contents'>
+<ul class='item-lists'>
+<% @favorites.each do |favorite| %>
+<li class='list'>
+  <%= link_to item_path(favorite.item_id) do %>
+    <div class='item-img-content'>
+      <%= image_tag favorite.item.image, class: "item-img" %>
+      <% if favorite.item.record.present? %>
+        <div class='sold-out'>
+          <span>Sold Out!!</span>
+        </div>
+      <% end %>
+      </div>
+    <div class='item-info'>
+      <h3 class='item-name'>
+        <%= favorite.item.name %>
+      </h3>
+    <% end %>
+      <div class='item-price'>
+        <span><%= favorite.item.price %>円<br><%= favorite.item.shipping.name %></span>
+      </div>
+    </div>
+</li> 
+<% end %>
+</ul>
+</div>
+<% else %>
+    <div class="search-result">
+      <p class="search-message">お気に入り登録された商品はありません</p>
+      <div>
+        <%= link_to "もどる", root_path, class:"return-btn" %>
+      </div>
+    </div>
+<% end %>
+
+

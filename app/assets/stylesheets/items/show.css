@@ -113,7 +113,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  height: 50px;
+}
+
+.favorite-btn:hover  {
+  opacity: 0.7;
+}
+
+.favorite-btn:active  {
+  position: relative;
+  top: 2px;
 }
 
 .favorite-star-icon {
