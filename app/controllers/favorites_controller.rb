@@ -1,6 +1,4 @@
 class FavoritesController < ApplicationController
-
-
   def check
     favorite = Favorite.find_by(item_id: params[:item_id], user_id: current_user.id)
     if favorite.present?
@@ -15,9 +13,8 @@ class FavoritesController < ApplicationController
     item = Favorite.find_by(item_id: params[:item_id], user_id: current_user.id)
     render json: { post: item }
   end
-  
+
   def index
     @favorites = Favorite.where(user_id: params[:user_id], checked: true).includes(:item)
   end
-
 end

@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.order('created_at DESC')
-    @favorites = Favorite.find_by(user_id: current_user.id)
   end
 
   def owner
@@ -48,7 +47,7 @@ class ItemsController < ApplicationController
   def search
     keyword = params[:keyword]
     if keyword.present?
-    @items = Item.search(params[:keyword])
+      @items = Item.search(params[:keyword])
     else
       redirect_to root_path
     end
@@ -67,6 +66,4 @@ class ItemsController < ApplicationController
   def seller_check
     redirect_to root_path unless current_user.id == @item.user.id
   end
-
-
 end

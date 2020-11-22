@@ -41,5 +41,4 @@ class RecordsController < ApplicationController
   def sold_out
     redirect_to root_path unless @item.record.nil?
   end
-  
 end
