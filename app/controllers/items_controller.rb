@@ -25,8 +25,10 @@ class ItemsController < ApplicationController
   end
 
   def show
-    favorite = Favorite.find_by(item_id: @item.id, user_id: current_user.id)
-    @favorite = favorite.checked
+    favorite_item = Favorite.find_by(item_id: @item.id, user_id: current_user.id)
+      if favorite_item.present?
+        @favorite_item = favorite_item.checked?
+      end
   end
 
   def edit

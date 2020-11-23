@@ -1,7 +1,6 @@
 const favorite = () => {
   
   const favoriteClick = document.getElementById("favorite-btn");
-  const favoriteMark = document.getElementById("favorite-star-icon");
   const favoriteText = document.getElementById("favorite")
 
     favoriteClick.addEventListener("click", () => {
@@ -14,6 +13,7 @@ const favorite = () => {
 
       XHR.onload = () => {
         const item = XHR.response.post
+        console.log(item)
         if (item.checked == true) {
           favoriteClick.setAttribute("style", "background-color: #FF6600; color: white;")
           favoriteText.innerHTML = "お気に入り登録済み"
