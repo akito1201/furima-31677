@@ -48,7 +48,7 @@ class ItemsController < ApplicationController
   def search
     keyword = params[:keyword]
     if keyword.present?
-      @items = Item.search(params[:keyword])
+      @items = Item.search(keyword)
     else
       redirect_to root_path
     end

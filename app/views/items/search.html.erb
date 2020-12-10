@@ -1,7 +1,7 @@
 <%= render "shared/header" %>
 <ul class='item-lists'>
 <% if @items.present? %>
-    <%= render partial: "item", collection: @items %>
+    <%= render partial: "shared/search_results", collection: @items %>
 <% else %>
     <div class="search-result">
       <p class="search-message">該当する商品はありません</p>
